@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:route_e_commerce_app/auth/register/register_screen.dart';
+import 'package:route_e_commerce_app/auth/register/view/register_screen.dart';
 import 'package:route_e_commerce_app/splash/splash_screen.dart';
 import 'utils/app_theme.dart';
 
