@@ -124,7 +124,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 20.h),
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          if(formKey.currentState!.validate()){}
+                        },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: AppColors.whiteColor,
                             padding: EdgeInsets.symmetric(vertical: 12.h),
