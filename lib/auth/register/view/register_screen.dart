@@ -29,7 +29,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       bloc: viewModel,
       listener: (context, state) {
         if(state is RegisterLoadingState){
-          DialogUtils.showMessage(context, state.loadingMessage??'waiting');
+          DialogUtils.showMessage(context, state.loadingMessage?? 'waiting');
         }else if (state is RegisterErrorState){
           DialogUtils.hideLoading(context);
           DialogUtils.showMessage(context, state.errorMessage?? '');

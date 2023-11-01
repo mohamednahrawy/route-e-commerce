@@ -1,6 +1,6 @@
 
 
-import '../../data/model/response/RegisterResponseModel.dart';
+import '../../data/model/response/RegisterResponse.dart';
 
 abstract class RegisterStates {}
 
@@ -10,8 +10,6 @@ class RegisterLoadingState extends RegisterStates {
   RegisterLoadingState({this.loadingMessage});
 }
 
-class RegisterInitialState extends RegisterStates {}
-
 class RegisterErrorState extends RegisterStates {
   String? errorMessage;
 
@@ -19,7 +17,7 @@ class RegisterErrorState extends RegisterStates {
 }
 
 class RegisterSuccessState extends RegisterStates {
-  RegisterResponseModel response;
+  RegisterResponse response;
 
   RegisterSuccessState({required this.response});
 }

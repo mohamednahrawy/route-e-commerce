@@ -3,10 +3,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:route_e_commerce_app/auth/register/view/cubit/states.dart';
 
 import '../../../../api/api_manager.dart';
+import '../../data/model/response/RegisterResponse.dart';
 
 
 class RegisterScreenViewModel extends Cubit<RegisterStates> {
-  RegisterScreenViewModel() : super(RegisterInitialState());
+  RegisterScreenViewModel() : super(RegisterLoadingState());
 
   // hold data - handle Logic
   var formKey = GlobalKey<FormState>();
@@ -22,7 +23,7 @@ class RegisterScreenViewModel extends Cubit<RegisterStates> {
     try {
       if (formKey.currentState!.validate()) {
         emit(RegisterLoadingState());
-        var response = await ApiManager.register(
+        RegisterResponse response = await ApiManager.register(
             nameController.text,
             emailController.text,
             passwordController.text,

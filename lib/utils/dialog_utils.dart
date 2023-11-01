@@ -6,9 +6,9 @@ class DialogUtils {
         context: context,
         barrierDismissible: false,
         builder: (context) {
-          return const AlertDialog(
+          return  AlertDialog(
             content: Row(children: [
-              CircularProgressIndicator(),
+              CircularProgressIndicator(color: Theme.of(context).primaryColor),
             ]),
           );
         });
@@ -45,6 +45,7 @@ class DialogUtils {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
+            backgroundColor: Theme.of(context).primaryColor,
             content: Text(message),
             title: Text(title ?? ''),
             actions: actions,

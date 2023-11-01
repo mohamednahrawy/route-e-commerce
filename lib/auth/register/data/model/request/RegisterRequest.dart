@@ -4,21 +4,21 @@
 /// rePassword : "Ahmed@123"
 /// phone : "01010700700"
 
-class RegisterRequestModel {
+class RegisterRequest {
   String? name;
   String? email;
   String? password;
   String? rePassword;
   String? phone;
 
-  RegisterRequestModel({
+  RegisterRequest({
       this.name, 
       this.email, 
       this.password, 
       this.rePassword, 
       this.phone,});
 
-  RegisterRequestModel.fromJson(dynamic json) {
+  RegisterRequest.fromJson(dynamic json) {
     name = json['name'];
     email = json['email'];
     password = json['password'];
