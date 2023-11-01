@@ -17,7 +17,7 @@ class RegisterScreenViewModel extends Cubit<RegisterStates> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController rePasswordController = TextEditingController();
   bool isObsecurePassword = true;
-  bool isObsecureRePassword = false;
+  bool isObsecureRePassword = true;
 
   void register() async {
     try {
