@@ -1,15 +1,13 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:route_e_commerce_app/auth/register/view/cubit/states.dart';
-
-import '../../../data/api/api_manager.dart';
-import '../../../data/model/response/RegisterResponse.dart';
-import '../../../data/repository/auth_repository/auth_repository_contract.dart';
+import 'package:route_e_commerce_app/auth/ui/cubit/states.dart';
+import '../../data/model/response/RegisterResponse.dart';
+import '../../domain/use_case/register_use_case.dart';
 
 class RegisterScreenViewModel extends Cubit<RegisterStates> {
-  AuthRepositoryContract authRepositoryContract;
+  RegisterUseCase registerUseCase;
 
-  RegisterScreenViewModel({required this.authRepositoryContract})
+  RegisterScreenViewModel({required this.registerUseCase})
       : super(RegisterLoadingState());
 
   // hold data - handle Logic
@@ -26,7 +24,7 @@ class RegisterScreenViewModel extends Cubit<RegisterStates> {
     try {
       if (formKey.currentState!.validate()) {
         emit(RegisterLoadingState());
-        RegisterResponse response = await authRepositoryContract.register(
+        RegisterResponse response = await registerUseCase.register(
             nameController.text, emailController.text, passwordController.text,
             rePasswordController.text, phoneController.text);
         if (response.message != 'success') {

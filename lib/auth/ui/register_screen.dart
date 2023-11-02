@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:regexpattern/regexpattern.dart';
-import 'package:route_e_commerce_app/auth/data/repository/auth_repository/repository/auth_repository_impl.dart';
+import 'package:route_e_commerce_app/auth/domain/use_case/register_use_case.dart';
 import 'package:route_e_commerce_app/utils/app_colors.dart';
 import 'package:route_e_commerce_app/utils/text_field_item.dart';
 import '../../../utils/dialog_utils.dart';
@@ -22,7 +22,7 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   RegisterScreenViewModel viewModel = RegisterScreenViewModel(
-      authRepositoryContract: injectAuthRepositoryContract());
+     registerUseCase: injectRegisterUseCase());
 
   @override
   Widget build(BuildContext context) {

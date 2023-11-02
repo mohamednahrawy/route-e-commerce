@@ -1,6 +1,6 @@
-import '../../api/api_manager.dart';
-import '../../model/response/RegisterResponse.dart';
-import 'data_source/auth_remote_data_source_impl.dart';
+import '../../../data/api/api_manager.dart';
+import '../../../data/model/response/RegisterResponse.dart';
+import '../../../data/repository/data_source/auth_remote_data_source_impl.dart';
 
 abstract class AuthRemoteDataSource {
   ///todo: includes only abstract function
