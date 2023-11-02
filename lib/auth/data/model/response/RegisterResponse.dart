@@ -1,4 +1,4 @@
-import 'package:route_e_commerce_app/auth/register/data/model/response/phone_error.dart';
+import 'package:route_e_commerce_app/auth/data/model/response/phone_error.dart';
 
 /// message : "success"
 /// user : {"name":"Ahmed Abd Al-Muti8","email":"ma.multipharma@gmail.com","role":"user"}
