@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:route_e_commerce_app/splash/splash_screen.dart';
 import 'auth/ui/register_screen.dart';
+import 'home/home_secreen_ui/home_page.dart';
 import 'utils/app_theme.dart';
 
 void main() {
@@ -19,10 +20,11 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: AppTheme.lightTheme,
-            initialRoute: SplashScreen.routeName,
+            initialRoute: HomePage.routeName,
             routes: {
               RegisterScreen.routeName: (context) => const RegisterScreen(),
               SplashScreen.routeName: (context) => const SplashScreen(),
+              HomePage.routeName : (context)=> HomePage()
             },
           );
         });

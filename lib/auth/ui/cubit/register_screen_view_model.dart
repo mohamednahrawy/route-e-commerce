@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:route_e_commerce_app/auth/ui/cubit/states.dart';
-import '../../data/model/response/RegisterResponse.dart';
+import '../../data/model/response/register_response.dart';
 import '../../domain/use_case/register_use_case.dart';
 
 class RegisterScreenViewModel extends Cubit<RegisterStates> {
@@ -21,20 +21,19 @@ class RegisterScreenViewModel extends Cubit<RegisterStates> {
   bool isObsecureRePassword = true;
 
   void register() async {
-    try {
-      if (formKey.currentState!.validate()) {
-        emit(RegisterLoadingState());
-        RegisterResponse response = await registerUseCase.register(
-            nameController.text, emailController.text, passwordController.text,
-            rePasswordController.text, phoneController.text);
-        if (response.message != 'success') {
-          emit(RegisterErrorState(errorMessage: response.message));
-        } else {
-          emit(RegisterSuccessState(response: response));
-        }
-      }
-    } catch (e) {
-      emit(RegisterErrorState(errorMessage: e.toString()));
+    if (formKey.currentState!.validate()) {
+      emit(RegisterLoadingState());
+      var either = await registerUseCase.invoke(
+          nameController.text,
+          emailController.text,
+          passwordController.text,
+          rePasswordController.text,
+          phoneController.text);
+      either.fold((l) {
+        emit(RegisterErrorState(errorMessage: l.errorMessage));
+      }, (response) {
+        emit(RegisterSuccessState(response: response));
+      });
     }
   }
 }

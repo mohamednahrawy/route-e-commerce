@@ -6,6 +6,7 @@ import 'package:route_e_commerce_app/utils/app_colors.dart';
 class AppTheme {
   static ThemeData lightTheme = ThemeData(
     primaryColor: AppColors.primaryColor,
+      appBarTheme: const AppBarTheme(color: Colors.transparent,elevation: 0,),
       textTheme: TextTheme(
           titleLarge: GoogleFonts.poppins(
               fontSize: 24.sp,

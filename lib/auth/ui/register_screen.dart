@@ -21,8 +21,8 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  RegisterScreenViewModel viewModel = RegisterScreenViewModel(
-     registerUseCase: injectRegisterUseCase());
+  RegisterScreenViewModel viewModel =
+      RegisterScreenViewModel(registerUseCase: injectRegisterUseCase());
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
           DialogUtils.showMessage(context, state.errorMessage ?? '');
         } else if (state is RegisterSuccessState) {
           DialogUtils.hideLoading(context);
-          DialogUtils.showMessage(context, state.response.user?.name ?? '');
+          DialogUtils.showMessage(
+              context, state.response.userEntity?.name ?? '');
         }
       },
       child: Scaffold(
