@@ -6,7 +6,3 @@ import '../entities/CategoryEntity.dart';
 abstract class HomeRemoteDataSource{
   Future <Either<Failures,CategoryResponseEntity>>getAllCategories();
 }
-
-abstract class HomeLocalDataSource{
-  Future <Either<Failures,CategoryResponseEntity>>getAllCategories();
-}

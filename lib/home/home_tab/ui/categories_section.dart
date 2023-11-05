@@ -19,7 +19,7 @@ class _CategoriesSectionState extends State<CategoriesSection> {
       HomeTabViewModel(getAllCategoryUseCase: injectGetAllCategoryUseCase());
 @override
   void initState() {
-    // TODO: implement initState
+    super.initState();
     viewModel.getCategories();
   }
   @override
@@ -28,31 +28,29 @@ class _CategoriesSectionState extends State<CategoriesSection> {
       bloc: viewModel,
       builder: (context, state){
         if(state is HomeTabLoadingState){
-          return CircularProgressIndicator();
+          return const CircularProgressIndicator();
         }else if(state is HomeTabSuccessState){
           return Center(child: Text(viewModel.categoriesList.length.toString()));
         }else{
           return Center(child: Container(height: 50,width: 50,color: Colors.red,));
         }
       }
-        // viewModel.categoriesList.isEmpty
-        //     ? Center(child: CircularProgressIndicator())
-        //     : Text(viewModel.categoriesList?.length.toString()?? '0')
-        // Container(
-        //         height: 200.h,
-        //         child: GridView.builder(
-        //             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        //                 crossAxisCount: 2,
-        //                 mainAxisSpacing: 16,
-        //                 crossAxisSpacing: 16),
-        //             itemBuilder: (context, index)=>Column(
-        //               children: [
-        //
-        //               ],
-        //             )
-        //         ));
-      ,
     );
-    const Placeholder();
   }
 }
+// viewModel.categoriesList.isEmpty
+//     ? Center(child: CircularProgressIndicator())
+//     : Text(viewModel.categoriesList?.length.toString()?? '0')
+// Container(
+//         height: 200.h,
+//         child: GridView.builder(
+//             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+//                 crossAxisCount: 2,
+//                 mainAxisSpacing: 16,
+//                 crossAxisSpacing: 16),
+//             itemBuilder: (context, index)=>Column(
+//               children: [
+//
+//               ],
+//             )
+//         ));

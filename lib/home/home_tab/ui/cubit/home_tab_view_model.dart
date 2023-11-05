@@ -19,7 +19,7 @@ class HomeTabViewModel extends Cubit<HomeTabStates> {
     either.fold(
             (l) {
               emit(HomeTabErrorState(errorMessage: l.errorMessage));
-              Left(Failures(errorMessage: l.errorMessage));
+              // Left(Failures(errorMessage: l.errorMessage));
             },
         (response) {
               categoriesList = response.data?? [];

@@ -11,10 +11,7 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
 
   @override
   Future<Either<Failures, CategoryResponseEntity>> getAllCategories()async {
-    var either = await  apiManager.getCategories();
-    return either.fold(
-            (l) => Left(Failures(errorMessage: l.errorMessage)),
-            (response) => Right(response)
-    );
+    return await  apiManager.getCategories();
+
   }
 }

@@ -66,6 +66,7 @@ class ApiManager {
 
       var response = await http.get(url);
       var json = jsonDecode(response.body);
+      ///todo:hold the object
       var categoryResponse = CategoryResponseDto.fromJson(json);
 
       if (response.statusCode >= 200 && response.statusCode < 300) {
