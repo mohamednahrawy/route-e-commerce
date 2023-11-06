@@ -15,6 +15,11 @@ class AppTheme {
           titleMedium: GoogleFonts.poppins(
               fontSize: 18.sp,
               fontWeight: FontWeight.w400,
-              color: AppColors.whiteColor)),
+              color: AppColors.whiteColor),
+        titleSmall: GoogleFonts.poppins(
+            fontSize: 16.sp,
+            fontWeight: FontWeight.w400,
+            color: AppColors.primaryColor),
+      ),
   );
 }

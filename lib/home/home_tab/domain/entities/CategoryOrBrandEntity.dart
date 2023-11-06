@@ -1,20 +1,20 @@
-class CategoryResponseEntity {
+class CategoryOrBrandResponseEntity {
   int? results;
-  List<CategoryEntity>? data;
+  List<CategoryOrBrandEntity>? data;
 
-  CategoryResponseEntity({
+  CategoryOrBrandResponseEntity({
     this.results,
     this.data,
   });
 }
 
-class CategoryEntity {
+class CategoryOrBrandEntity {
   String? id;
   String? name;
   String? slug;
   String? image;
 
-  CategoryEntity({
+  CategoryOrBrandEntity({
     this.id,
     this.name,
     this.slug,

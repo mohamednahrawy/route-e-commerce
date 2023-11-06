@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
-import 'package:route_e_commerce_app/home/home_tab/data/model/CategoryResponseDto.dart';
+import '../../../home/home_tab/data/model/CategoryOrBrandResponseDto.dart';
 import '../model/request/RegisterRequest.dart';
 import '../model/response/register_response.dart';
 import 'api_constants.dart';
@@ -56,24 +56,47 @@ class ApiManager {
     }
   }
 
-
-  Future<Either<Failures, CategoryResponseDto>> getCategories() async {
+  Future<Either<Failures, CategoryOrBrandResponseDto>> getCategories() async {
     ///todo: check internet connectivity
     final connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {
-      Uri url = Uri.https(ApiConstants.baseUrl, ApiConstants.getAllCategoriesApi);
+      Uri url =
+          Uri.https(ApiConstants.baseUrl, ApiConstants.getAllCategoriesApi);
 
       var response = await http.get(url);
       var json = jsonDecode(response.body);
+
       ///todo:hold the object
-      var categoryResponse = CategoryResponseDto.fromJson(json);
+      var categoryResponse = CategoryOrBrandResponseDto.fromJson(json);
 
       if (response.statusCode >= 200 && response.statusCode < 300) {
         return Right(categoryResponse);
       } else {
-        return Left(Failures(
-            errorMessage: categoryResponse.message));
+        return Left(Failures(errorMessage: categoryResponse.message));
+      }
+    } else {
+      return Left(Failures(errorMessage: 'Please, Check internet connection'));
+    }
+  }
+
+  Future<Either<Failures, CategoryOrBrandResponseDto>> getBrands() async {
+    ///todo: check internet connectivity
+    final connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.mobile ||
+        connectivityResult == ConnectivityResult.wifi) {
+      Uri url = Uri.https(ApiConstants.baseUrl, ApiConstants.getAllBrandsApi);
+
+      var response = await http.get(url);
+      var json = jsonDecode(response.body);
+
+      ///todo:hold the object
+      var brandResponse = CategoryOrBrandResponseDto.fromJson(json);
+
+      if (response.statusCode >= 200 && response.statusCode < 300) {
+        return Right(brandResponse);
+      } else {
+        return Left(Failures(errorMessage: brandResponse.message));
       }
     } else {
       return Left(Failures(errorMessage: 'Please, Check internet connection'));

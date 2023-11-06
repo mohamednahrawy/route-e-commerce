@@ -3,12 +3,12 @@ import 'package:route_e_commerce_app/home/home_tab/domain/repository/home_reposi
 import '../../../../auth/data/api/failures.dart';
 import '../entities/CategoryOrBrandEntity.dart';
 
-class GetAllCategoryUseCase{
+class GetAllBrandsUseCase{
   //needs object of the repository
   HomeRepositoryContract repositoryContract;
-  GetAllCategoryUseCase({required this.repositoryContract});
+  GetAllBrandsUseCase({required this.repositoryContract});
 
   Future<Either<Failures, CategoryOrBrandResponseEntity>> invoke(){
-    return repositoryContract.getAllCategories();
+    return repositoryContract.getAllBrands();
   }
 }

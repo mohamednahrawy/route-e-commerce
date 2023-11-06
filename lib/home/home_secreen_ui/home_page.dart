@@ -19,8 +19,9 @@ class HomePage extends StatelessWidget {
         listener: (context, state) {},
         builder: (context, state) {
           return Scaffold(
+              body: viewModel.tabs[viewModel.selectedIndex],
               bottomNavigationBar: buildBottomNavigationBar(context),
-              body: viewModel.tabs[viewModel.selectedIndex]);
+          );
         });
   }
 

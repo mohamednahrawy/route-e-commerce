@@ -1,11 +1,11 @@
-import '../../domain/entities/CategoryEntity.dart';
+import '../../domain/entities/CategoryOrBrandEntity.dart';
 
-class CategoryResponseDto extends CategoryResponseEntity {
+class CategoryOrBrandResponseDto extends CategoryOrBrandResponseEntity {
   Metadata? metadata;
   String? message;
   String? statusMsg;
 
-  CategoryResponseDto({
+  CategoryOrBrandResponseDto({
     super.results,
     this.metadata,
     this.message,
@@ -13,7 +13,7 @@ class CategoryResponseDto extends CategoryResponseEntity {
     super.data,
   });
 
-  CategoryResponseDto.fromJson(dynamic json) {
+  CategoryOrBrandResponseDto.fromJson(dynamic json) {
     results = json['results'];
     message = json['message'];
     statusMsg = json['statusMsg'];
@@ -22,14 +22,14 @@ class CategoryResponseDto extends CategoryResponseEntity {
     if (json['data'] != null) {
       data = [];
       json['data'].forEach((v) {
-        data?.add(CategoryDto.fromJson(v));
+        data?.add(CategoryOrBrandDto.fromJson(v));
       });
     }
   }
 }
 
-class CategoryDto extends CategoryEntity {
-  CategoryDto({
+class CategoryOrBrandDto extends CategoryOrBrandEntity {
+  CategoryOrBrandDto({
     super.id,
     super.name,
     super.slug,
@@ -38,7 +38,7 @@ class CategoryDto extends CategoryEntity {
     this.updatedAt,
   });
 
-  CategoryDto.fromJson(dynamic json) {
+  CategoryOrBrandDto.fromJson(dynamic json) {
     id = json['_id'];
     name = json['name'];
     slug = json['slug'];

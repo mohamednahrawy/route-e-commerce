@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:route_e_commerce_app/auth/ui/cubit/states.dart';
-import '../../data/model/response/register_response.dart';
 import '../../domain/use_case/register_use_case.dart';
 
 class RegisterScreenViewModel extends Cubit<RegisterStates> {
@@ -31,8 +30,8 @@ class RegisterScreenViewModel extends Cubit<RegisterStates> {
           phoneController.text);
       either.fold((l) {
         emit(RegisterErrorState(errorMessage: l.errorMessage));
-      }, (response) {
-        emit(RegisterSuccessState(response: response));
+      }, (r) {
+        emit(RegisterSuccessState(response: r));
       });
     }
   }
