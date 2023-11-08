@@ -4,7 +4,6 @@ import 'package:route_e_commerce_app/home/home_tab/domain/repository/home_remote
 import 'package:route_e_commerce_app/home/home_tab/domain/repository/home_repository_contract.dart';
 import 'package:route_e_commerce_app/home/home_tab/domain/use_case/get_all_brands_use_case.dart';
 import 'package:route_e_commerce_app/home/home_tab/domain/use_case/get_all_categories_use_case.dart';
-
 import '../../../api/api_manager.dart';
 
 GetAllCategoryUseCase injectGetAllCategoryUseCase() {

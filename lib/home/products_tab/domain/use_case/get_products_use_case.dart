@@ -4,10 +4,12 @@ import '../../../../api/failures.dart';
 import '../../data/model/ProductResponsetDto.dart';
 import '../repository/products_repository_contract.dart';
 
-class GetProductsUseCase{
+class GetProductsUseCase {
   ProductsRepositoryContract productsRepositoryContract;
+
   GetProductsUseCase({required this.productsRepositoryContract});
-  Future<Either<Failures, ProductsResponseDto>> invoke(){
+
+  Future<Either<Failures, ProductsResponseDto>> invoke() {
     return productsRepositoryContract.getProducts();
   }
 }
