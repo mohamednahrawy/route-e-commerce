@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:route_e_commerce_app/auth/domain/entities/auth_result_entity.dart';
-import '../../data/api/failures.dart';
+
+import '../../../api/failures.dart';
 
 abstract class AuthRepositoryContract {
   ///todo: includes only abstract function

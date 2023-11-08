@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:route_e_commerce_app/auth/data/api/failures.dart';
 import 'package:route_e_commerce_app/home/home_tab/domain/entities/CategoryOrBrandEntity.dart';
 import 'package:route_e_commerce_app/home/home_tab/domain/repository/home_repository_contract.dart';
+import '../../../../api/failures.dart';
 import '../../domain/repository/home_remote_data_source.dart';
 
 class HomeRepositoryImpl implements HomeRepositoryContract {

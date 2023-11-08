@@ -1,9 +1,10 @@
 import 'package:dartz/dartz.dart';
-import 'package:route_e_commerce_app/auth/data/api/failures.dart';
 import 'package:route_e_commerce_app/auth/data/model/response/register_response.dart';
 import 'package:route_e_commerce_app/auth/domain/entities/auth_result_entity.dart';
 import 'package:route_e_commerce_app/auth/domain/repository/data_source/auth_remote_data_source.dart';
-import '../../api/api_manager.dart';
+
+import '../../../../api/api_manager.dart';
+import '../../../../api/failures.dart';
 
 
 
