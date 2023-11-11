@@ -1,3 +1,4 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,10 +19,17 @@ class HomePage extends StatelessWidget {
         bloc: viewModel,
         listener: (context, state) {},
         builder: (context, state) {
-          return Scaffold(
-              body: viewModel.tabs[viewModel.selectedIndex],
-              bottomNavigationBar: buildBottomNavigationBar(context),
-          );
+          return StreamBuilder<ConnectivityResult>(
+              stream: Connectivity().onConnectivityChanged,
+              builder: (context, snapshot) {
+                return Scaffold(
+                  body: snapshot.data == ConnectivityResult.none
+                      ? const Center(
+                          child: Text('please, check internet connectivity'))
+                      : viewModel.tabs[viewModel.selectedIndex],
+                  bottomNavigationBar: buildBottomNavigationBar(context),
+                );
+              });
         });
   }
 

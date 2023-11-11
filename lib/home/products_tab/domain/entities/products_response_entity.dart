@@ -5,12 +5,12 @@
 class ProductsResponseEntity {
   int? results;
   MetadataEntity? metadata;
-  List<ProductEntity>? data;
+  List<ProductEntity>? products;
 
   ProductsResponseEntity({
     this.results,
     this.metadata,
-    this.data,
+    this.products,
   });
 }
 
