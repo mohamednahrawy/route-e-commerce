@@ -7,7 +7,6 @@ import '../../domain/use_case/get_products_use_case.dart';
 class ProductsTabViewModel extends Cubit<ProductsTabStates> {
   GetProductsUseCase getProductsUseCase;
 
-
   ProductsTabViewModel({required this.getProductsUseCase})
       : super(ProductsTabInitialState());
 

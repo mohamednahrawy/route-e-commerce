@@ -19,17 +19,10 @@ class HomePage extends StatelessWidget {
         bloc: viewModel,
         listener: (context, state) {},
         builder: (context, state) {
-          return StreamBuilder<ConnectivityResult>(
-              stream: Connectivity().onConnectivityChanged,
-              builder: (context, snapshot) {
-                return Scaffold(
-                  body: snapshot.data == ConnectivityResult.none
-                      ? const Center(
-                          child: Text('please, check internet connectivity'))
-                      : viewModel.tabs[viewModel.selectedIndex],
-                  bottomNavigationBar: buildBottomNavigationBar(context),
-                );
-              });
+          return Scaffold(
+            body: viewModel.tabs[viewModel.selectedIndex],
+            bottomNavigationBar: buildBottomNavigationBar(context),
+          );
         });
   }
 
@@ -72,7 +65,8 @@ class HomePage extends StatelessWidget {
                     radius: 20.r,
                     child: ImageIcon(
                         size: 40.sp,
-                        const AssetImage('assets/images/heart_unselected.png')),
+                        const AssetImage(
+                            'assets/images/categories_unselected.png')),
                   )),
               BottomNavigationBarItem(
                   label: '',
@@ -86,8 +80,7 @@ class HomePage extends StatelessWidget {
                     radius: 20.r,
                     child: ImageIcon(
                         size: 40.sp,
-                        const AssetImage(
-                            'assets/images/profile_unselected.png')),
+                        const AssetImage('assets/images/heart_unselected.png')),
                   )),
               BottomNavigationBarItem(
                   label: '',
@@ -101,7 +94,8 @@ class HomePage extends StatelessWidget {
                     radius: 20.r,
                     child: ImageIcon(
                         size: 40.sp,
-                        const AssetImage('assets/images/home_unselected.png')),
+                        const AssetImage(
+                            'assets/images/profile_unselected.png')),
                   )),
             ]),
       );
