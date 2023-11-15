@@ -11,7 +11,7 @@ import '../../../../utils/app_colors.dart';
 
 class ProductsTab extends StatelessWidget {
   final ProductsTabViewModel viewModel =
-      ProductsTabViewModel(getProductsUseCase: injectGetProductsUseCase());
+  ProductsTabViewModel(getProductsUseCase: injectGetProductsUseCase());
 
   ProductsTab({
     super.key,
@@ -28,21 +28,25 @@ class ProductsTab extends StatelessWidget {
               if (states is ProductsTabLoadingState) {
                 return Center(
                     child: CircularProgressIndicator(
-                  color: AppColors.primaryColor,
-                ));
+                      color: AppColors.primaryColor,
+                    ));
               }
               if (states is ProductsTabErrorState) {
-                return Text(states.errorMessage ?? '');
+                return Center(child: Text(states.errorMessage ?? ''));
               }
               if (states is ProductsTabSuccessState) {
                 return Padding(
                   padding:
-                      EdgeInsets.only(top: 10.0.h, right: 10.w, left: 10.w),
+                  EdgeInsets.only(top: 10.0.h, right: 10.w, left: 10.w),
                   child: GridView.builder(
                     itemCount: states.responseEntity.products?.length,
-                    itemBuilder: (context, index) => ProductItem(
-                      productEntity: states.responseEntity.products![index],
-                    ),
+                    itemBuilder: (context, index) =>
+                        ProductItem(
+                          productEntity: states.responseEntity.products![index],
+                          onTap: () {
+
+                          },
+                        ),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                         mainAxisSpacing: 12.h,

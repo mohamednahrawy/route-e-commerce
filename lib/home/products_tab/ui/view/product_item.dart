@@ -14,9 +14,11 @@ class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        Navigator.of(context)
-            .pushNamed(ProductDetails.routeName, arguments: productEntity);
+      onTap: (){
+        Navigator.of(context).pushNamed(
+            ProductDetails.routeName,
+            arguments: productEntity
+                );
       },
       child: Container(
         decoration: BoxDecoration(

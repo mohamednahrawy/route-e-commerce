@@ -14,12 +14,15 @@ class ProductsTabViewModel extends Cubit<ProductsTabStates> {
   List<ProductEntity> products = [];
 
   void getProducts()async {
+    emit(ProductsTabLoadingState());
     var either = await getProductsUseCase.invoke();
     either.fold(
             (l){
+              emit(ProductsTabLoadingState());
               emit(ProductsTabErrorState(errorMessage: l.errorMessage));
             },
             (r) {
+
               products = r.products!;
               emit(ProductsTabSuccessState(responseEntity: r));
             }

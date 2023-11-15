@@ -4,7 +4,7 @@ abstract class ProductsTabStates {}
 
 class ProductsTabInitialState extends ProductsTabStates {}
 
-class ProductsTabLoadingState {
+class ProductsTabLoadingState extends ProductsTabStates {
   String? loadingMessage;
 
   ProductsTabLoadingState({this.loadingMessage});

@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
               RegisterScreen.routeName: (context) => const RegisterScreen(),
               SplashScreen.routeName: (context) => const SplashScreen(),
               HomePage.routeName : (context)=> HomePage(),
-              ProductDetails.routeName : (context)=> const ProductDetails(),
+              ProductDetails.routeName : (context)=> ProductDetails(),
             },
           );
         });

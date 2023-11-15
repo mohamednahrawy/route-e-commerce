@@ -29,7 +29,6 @@ class ProductsResponseDto extends ProductsResponseEntity {
 }
 
 class ProductDto extends ProductEntity {
-  CategoryDto? categoryMoh;
   ProductDto({
     super.sold,
     super.images,
@@ -42,7 +41,6 @@ class ProductDto extends ProductEntity {
     super.quantity,
     super.price,
     super.imageCover,
-    this.categoryMoh,
     super.brand,
     super.ratingsAverage,
     super.createdAt,
