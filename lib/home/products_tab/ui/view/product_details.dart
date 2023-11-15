@@ -19,20 +19,22 @@ class ProductDetails extends StatelessWidget {
         appBar: buildAppBar(context),
         body: Padding(
           padding: EdgeInsets.only(right: 15.0.w, left: 15.w),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              buildImageSlideShow(),
-              SizedBox(height: 24.h),
-              buildFirstRow(context),
-              SizedBox(height: 16.h),
-              buildSecondRow(context),
-              SizedBox(height: 16.h),
-              buildDescription(context),
-              SizedBox(height: 130.h),
-              buildThirdRow(context),
-              SizedBox(height: 70.h),
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                buildImageSlideShow(),
+                SizedBox(height: 24.h),
+                buildFirstRow(context),
+                SizedBox(height: 16.h),
+                buildSecondRow(context),
+                SizedBox(height: 16.h),
+                buildDescription(context),
+                SizedBox(height: 130.h),
+                buildThirdRow(context),
+                SizedBox(height: 70.h),
+              ],
+            ),
           ),
         ));
   }

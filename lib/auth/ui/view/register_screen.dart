@@ -6,10 +6,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:regexpattern/regexpattern.dart';
 import 'package:route_e_commerce_app/auth/domain/use_case/register_use_case.dart';
 import 'package:route_e_commerce_app/utils/app_colors.dart';
-import 'package:route_e_commerce_app/utils/text_field_item.dart';
-import '../../../utils/dialog_utils.dart';
-import 'cubit/register_screen_view_model.dart';
-import 'cubit/states.dart';
+import 'package:route_e_commerce_app/auth/ui/view/text_field_item.dart';
+import '../../../../utils/dialog_utils.dart';
+import '../cubit/register_screen_view_model.dart';
+import '../cubit/states.dart';
 
 class RegisterScreen extends StatefulWidget {
   static const String routeName = 'register-screen';
