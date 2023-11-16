@@ -2,12 +2,12 @@ import 'dart:convert';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
-import 'package:route_e_commerce_app/auth/data/model/request/SigninRequest.dart';
-import 'package:route_e_commerce_app/auth/data/model/response/SignInResponseDto.dart';
 import 'package:route_e_commerce_app/home/products_tab/data/model/ProductResponsetDto.dart';
 import '../../../home/home_tab/data/model/CategoryOrBrandResponseDto.dart';
-import '../auth/data/model/request/RegisterRequest.dart';
-import '../auth/data/model/response/register_response.dart';
+import '../login/data/model/response/SignInResponseDto.dart';
+import '../login/data/model/request/SigninRequest.dart';
+import '../register/data/model/request/RegisterRequest.dart';
+import '../register/data/model/response/register_response.dart';
 import 'api_constants.dart';
 import 'failures.dart';
 
