@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
             theme: AppTheme.lightTheme,
             initialRoute: LogInScreen.routeName,
             routes: {
-              LogInScreen.routeName : (context)=> const LogInScreen(),
+              LogInScreen.routeName : (context)=> LogInScreen(),
               RegisterScreen.routeName: (context) => const RegisterScreen(),
               SplashScreen.routeName: (context) => const SplashScreen(),
               HomePage.routeName : (context)=> HomePage(),
