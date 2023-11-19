@@ -55,7 +55,7 @@ class ProductDetails extends StatelessWidget {
         height: 300,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(18),
-            border: Border.all(color: AppColors.descriptionColor, width: 1)),
+            border: Border.all(color: AppColors.textColor, width: 1)),
         child: ImageSlideshow(
             height: 300.h,
             children: args.images!
@@ -89,7 +89,7 @@ class ProductDetails extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 7.h),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(25),
-                border: Border.all(color: AppColors.descriptionColor)),
+                border: Border.all(color: AppColors.textColor)),
             child: Text(
               '${args.sold} Sold',
               style: Theme.of(context).textTheme.bodySmall,
@@ -146,7 +146,7 @@ class ProductDetails extends StatelessWidget {
           style: Theme.of(context)
               .textTheme
               .bodySmall
-              ?.copyWith(color: AppColors.descriptionColor),
+              ?.copyWith(color: AppColors.textColor),
           trimLines: 2,
           colorClickableText: Colors.pink,
           trimMode: TrimMode.Line,
@@ -167,7 +167,7 @@ class ProductDetails extends StatelessWidget {
                 style: Theme.of(context)
                     .textTheme
                     .bodyMedium
-                    ?.copyWith(color: AppColors.descriptionColor),
+                    ?.copyWith(color: AppColors.textColor),
               ),
               Text(
                 'EGP 3500',

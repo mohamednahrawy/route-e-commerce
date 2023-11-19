@@ -23,7 +23,7 @@ class ProductItem extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(18),
-          border: Border.all(color: AppColors.descriptionColor, width: 1),
+          border: Border.all(color: AppColors.textColor, width: 1.5),
         ),
         child: Stack(children: [
           Column(

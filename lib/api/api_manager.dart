@@ -4,10 +4,11 @@ import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 import 'package:route_e_commerce_app/home/products_tab/data/model/ProductResponsetDto.dart';
 import '../../../home/home_tab/data/model/CategoryOrBrandResponseDto.dart';
-import '../login/data/model/response/SignInResponseDto.dart';
-import '../login/data/model/request/SigninRequest.dart';
+import '../Sign_in/data/model/request/SigninRequest.dart';
+import '../Sign_in/data/model/response/SignInResponseDto.dart';
 import '../register/data/model/request/RegisterRequest.dart';
 import '../register/data/model/response/register_response.dart';
+import '../utils/shared_preferences_utils.dart';
 import 'api_constants.dart';
 import 'failures.dart';
 
@@ -23,13 +24,13 @@ class ApiManager {
   https://ecommerce.routemisr.com/api/v1/auth/signup
    */
 
-  ///todo: type of the return in the future
   Future<Either<Failures, RegisterResponseDto>> register(String name,
       String email, String password, String rePassword, String phone) async {
     ///todo: check internet connectivity
     final connectivityResult = await Connectivity().checkConnectivity();
-    if (connectivityResult == ConnectivityResult.mobile ||
-        connectivityResult == ConnectivityResult.wifi) {
+    if (connectivityResult == ConnectivityResult.none) {
+      return Left(Failures(errorMessage: 'Please, Check internet connection'));
+    } else {
       Uri url = Uri.https(ApiConstants.baseUrl, ApiConstants.registerApi);
       var registerRequest = RegisterRequest(
           email: email,
@@ -41,6 +42,8 @@ class ApiManager {
       var response = await http.post(url, body: registerRequest.toJson());
       var json = jsonDecode(response.body);
       var registerResponse = RegisterResponseDto.fromJson(json);
+      SharedPreferenceUtils.saveData(
+          key: 'token', value: registerResponse.token);
 
       if (response.statusCode >= 200 && response.statusCode < 300) {
         return Right(registerResponse);
@@ -50,8 +53,6 @@ class ApiManager {
                 ? registerResponse.error?.msg
                 : registerResponse.message));
       }
-    } else {
-      return Left(Failures(errorMessage: 'Please, Check internet connection'));
     }
   }
 
@@ -64,13 +65,13 @@ class ApiManager {
       Uri url = Uri.https(ApiConstants.baseUrl, ApiConstants.signInApi);
       var signInRequest = SignInRequest(email: email, password: password);
       var response = await http.post(url, body: signInRequest.toJson());
-
       var signInResponse =
           SignInResponseDto.fromJson(jsonDecode(response.body));
+      await SharedPreferenceUtils.saveData(key:'token', value: signInResponse.token);
       if (response.statusCode >= 200 && response.statusCode < 300) {
         return Right(signInResponse);
       } else {
-        return Left(Failures(errorMessage: signInResponse.failure?.message));
+        return Left(Failures(errorMessage: signInResponse.message));
       }
     }
   }

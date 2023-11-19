@@ -1,8 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:route_e_commerce_app/login/domain/repository/signin_repository_contract.dart';
-
 import '../../../api/failures.dart';
 import '../entities/signin_response_entity.dart';
+import '../repository/signin_repository_contract.dart';
 
 class SignInUseCase {
   SignInRepositoryContract repositoryContract;

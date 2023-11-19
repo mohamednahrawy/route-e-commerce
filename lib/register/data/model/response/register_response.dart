@@ -1,11 +1,6 @@
 import 'package:route_e_commerce_app/register/data/model/response/phone_error.dart';
-
 import '../../../domain/entities/auth_result_entity.dart';
 import '../../../domain/entities/register_response_entities.dart';
-
-/// message : "success"
-/// user : {"name":"Ahmed Abd Al-Muti8","email":"ma.multipharma@gmail.com","role":"user"}
-/// token : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1M2Q2MWFlNjBhNzMzNzRhYTg2ZTBmOSIsIm5hbWUiOiJBaG1lZCBBYmQgQWwtTXV0aTgiLCJyb2xlIjoidXNlciIsImlhdCI6MTY5ODUyMTUxOSwiZXhwIjoxNzA2Mjk3NTE5fQ.GjW0f33Gw1vLx-8_u0uDX8SUfbZjH94MkuAHec_a31Y"
 
 class RegisterResponseDto {
   UserDto? user;

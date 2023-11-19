@@ -1,9 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:route_e_commerce_app/api/failures.dart';
-import 'package:route_e_commerce_app/login/domain/entities/signin_response_entity.dart';
-import 'package:route_e_commerce_app/login/domain/repository/signin_remote_data_source.dart';
-
 import '../../../api/api_manager.dart';
+import '../../domain/entities/signin_response_entity.dart';
+import '../../domain/repository/signin_remote_data_source.dart';
 
 class SignInRemoteDataSourceImpl implements SignInRemoteDataSource{
   ApiManager apiManager;
@@ -13,7 +12,7 @@ class SignInRemoteDataSourceImpl implements SignInRemoteDataSource{
     var response = await  apiManager.signIn(email: email, password: password);
     return response.fold(
             (l) => Left(Failures(errorMessage: l.errorMessage)),
-            (r) => Right(r.toEntity())
+            (response) => Right(response)
     );
   }
 }
