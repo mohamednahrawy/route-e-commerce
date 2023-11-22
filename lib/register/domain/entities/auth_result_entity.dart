@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:route_e_commerce_app/register/domain/entities/register_response_entities.dart';
+
+import '../../../Sign_in/domain/entities/signin_response_entity.dart';
 
 class AuthResultEntity{
   UserEntity? userEntity;

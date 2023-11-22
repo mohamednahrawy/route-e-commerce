@@ -15,13 +15,13 @@ class SharedPreferenceUtils {
     }
   }
 
-  static Future<String?> getData(String key) async {
+  static Future<Object?> getData(String key) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    return sharedPreferences.getString(key);
+    return sharedPreferences.get(key);
   }
 
-  static Future<bool> removeData(String key) async {
+  static Future<bool> clearData() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    return await sharedPreferences.remove(key);
+    return await sharedPreferences.clear();
   }
 }

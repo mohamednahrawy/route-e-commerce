@@ -1,6 +1,8 @@
+
 import 'package:route_e_commerce_app/register/data/model/response/phone_error.dart';
+
+import '../../../../Sign_in/domain/entities/signin_response_entity.dart';
 import '../../../domain/entities/auth_result_entity.dart';
-import '../../../domain/entities/register_response_entities.dart';
 
 class RegisterResponseDto {
   UserDto? user;

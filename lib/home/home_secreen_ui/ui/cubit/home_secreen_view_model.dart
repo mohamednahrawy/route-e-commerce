@@ -7,7 +7,7 @@ import '../../../profile_tab/ui/view/profile_tab_screen.dart';
 
 class HomeScreenViewModel extends Cubit<HomeScreenStates> {
   HomeScreenViewModel() : super(HomeScreenInitialState());
-  int selectedIndex = 3;
+  int selectedIndex = 1;
   List tabs = [
     HomeTab(),
     ProductsTab(),

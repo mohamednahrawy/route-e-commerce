@@ -2,23 +2,26 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:route_e_commerce_app/home/products_tab/domain/entities/products_response_entity.dart';
+import 'package:route_e_commerce_app/home/products_tab/ui/cubit/products_tab_view_model.dart';
 import 'package:route_e_commerce_app/home/products_tab/ui/view/product_details.dart';
 import 'package:route_e_commerce_app/utils/app_colors.dart';
 
 class ProductItem extends StatelessWidget {
   final ProductEntity productEntity;
-  final void Function()? onTap;
+ // final ProductsTabViewModel viewModel;
+  void Function()? onTap;
 
-  const ProductItem({super.key, required this.productEntity, this.onTap});
+  ProductItem(
+      {super.key, required this.productEntity, required this.onTap
+       // required this.viewModel
+      });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
-        Navigator.of(context).pushNamed(
-            ProductDetails.routeName,
-            arguments: productEntity
-                );
+      onTap: () {
+        Navigator.of(context)
+            .pushNamed(ProductDetails.routeName, arguments: productEntity);
       },
       child: Container(
         decoration: BoxDecoration(
@@ -44,12 +47,19 @@ class ProductItem extends StatelessWidget {
               )),
           Align(
               alignment: Alignment.bottomRight,
-              child: ImageIcon(
-                const AssetImage(
-                  'assets/images/icon_plus_circle.png',
+              child: InkWell(
+                onTap: onTap,
+                    // () {
+                  // viewModel.addToCart(productEntity.id ?? '');
+                  // print('number of Cart items: ${viewModel.numOfCartItems}');
+                // },
+                child: ImageIcon(
+                  const AssetImage(
+                    'assets/images/icon_plus_circle.png',
+                  ),
+                  size: 60,
+                  color: AppColors.primaryColor,
                 ),
-                size: 60,
-                color: AppColors.primaryColor,
               )),
         ]),
       ),

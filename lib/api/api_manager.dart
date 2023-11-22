@@ -2,7 +2,10 @@ import 'dart:convert';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
+import 'package:route_e_commerce_app/cart/data/model/GetCartResponseDto.dart';
+import 'package:route_e_commerce_app/home/products_tab/data/model/AddProductToCartDto.dart';
 import 'package:route_e_commerce_app/home/products_tab/data/model/ProductResponsetDto.dart';
+import 'package:route_e_commerce_app/home/products_tab/data/model/request/AddToCartRequest.dart';
 import '../../../home/home_tab/data/model/CategoryOrBrandResponseDto.dart';
 import '../Sign_in/data/model/request/SigninRequest.dart';
 import '../Sign_in/data/model/response/SignInResponseDto.dart';
@@ -67,7 +70,8 @@ class ApiManager {
       var response = await http.post(url, body: signInRequest.toJson());
       var signInResponse =
           SignInResponseDto.fromJson(jsonDecode(response.body));
-      await SharedPreferenceUtils.saveData(key:'token', value: signInResponse.token);
+      await SharedPreferenceUtils.saveData(
+          key: 'token', value: signInResponse.token);
       if (response.statusCode >= 200 && response.statusCode < 300) {
         return Right(signInResponse);
       } else {
@@ -139,6 +143,55 @@ class ApiManager {
     } else {
       return Left(
           Failures(errorMessage: 'please, check internet connectivity'));
+    }
+  }
+
+  Future<Either<Failures, AddToCartResponseDto>> addProductToCart(
+      String productId) async {
+    final connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.none) {
+      return Left(
+          Failures(errorMessage: 'Please, Check internet connectivity'));
+    } else {
+      Uri url = Uri.https(
+        ApiConstants.baseUrl,
+        ApiConstants.addToCart,
+      );
+      var addToCartRequest = AddToCartRequest(productId: productId);
+      var token = await SharedPreferenceUtils.getData('token');
+      var response = await http.post(url,
+          body: addToCartRequest.toJson(),
+          headers: {'token': token.toString() ?? ''}
+
+          ///todo: in a map form as it request should be in json form
+          );
+      var json = jsonDecode(response.body);
+      var addToCartResponse = AddToCartResponseDto.fromJson(json);
+
+      if (response.statusCode >= 200 && response.statusCode < 300) {
+        return Right(addToCartResponse);
+      } else {
+        return Left(Failures(errorMessage: addToCartResponse.message));
+      }
+    }
+  }
+
+  Future<Either<Failures, GetCartResponseDto>> getCart() async {
+    final connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.none) {
+      return Left(
+          Failures(errorMessage: 'Please, check internet Connectivity'));
+    } else {
+      Uri url = Uri.https(ApiConstants.baseUrl, ApiConstants.addToCart);
+      var token = await SharedPreferenceUtils.getData('token');
+      var response = await http.get(url, headers: {'token': token.toString()});
+      var json = jsonDecode(response.body);
+      var getCartResponse = GetCartResponseDto.fromJson(json);
+      if (response.statusCode >= 200 && response.statusCode < 300) {
+        return Right(getCartResponse);
+      } else {
+        return Left(Failures(errorMessage: getCartResponse.message));
+      }
     }
   }
 }

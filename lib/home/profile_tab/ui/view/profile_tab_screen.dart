@@ -22,8 +22,8 @@ class _ProfileTabState extends State<ProfileTab> {
         leading: Image.asset('assets/images/logo.png'),
         actions: [
           InkWell(
-              onTap: () async{
-             await SharedPreferenceUtils.removeData('token');
+              onTap: () {
+                SharedPreferenceUtils.clearData();
                 Navigator.of(context).pushNamedAndRemoveUntil(
                     SignInScreen.routeName, (route) => false);
               },
@@ -69,5 +69,4 @@ class _ProfileTabState extends State<ProfileTab> {
       ),
     );
   }
-
 }

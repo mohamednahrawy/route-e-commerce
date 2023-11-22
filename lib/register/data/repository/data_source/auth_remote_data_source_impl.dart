@@ -22,7 +22,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     return either.fold((l) {
       return Left(Failures(errorMessage: l.toString())) ;
     }, (response) {
-      return Right(response.toAuthResultEntity());
+      return Right(response!.toAuthResultEntity());
     });
   }
 }
